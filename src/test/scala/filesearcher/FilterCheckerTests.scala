@@ -22,15 +22,15 @@ class FilterCheckerTests extends FlatSpec {
     
     "FilterChecker passed a file with content that matches the filter" should
     "return that the match succeeded" in {
-        val isContentMatched = FilterChecker("app")
-            .matchesFileContent(new File("./testfiles/app.data"))
-        assert(isContentMatched == true)
+        val contentMatchedCount = FilterChecker("app")
+            .findMatchedContentCount(new File("./testfiles/app.data"))
+        assert(contentMatchedCount == 3)
     }
     
     "FilterChecker passed a file with content that does not match the filter" should
     "return that the match failed" in {
-        val isContentMatched = FilterChecker("app")
-            .matchesFileContent(new File("./testfiles/readme.txt"))
-        assert(isContentMatched == false)
+        val contentMatchedCount = FilterChecker("app")
+            .findMatchedContentCount(new File("./testfiles/readme.txt"))
+        assert(contentMatchedCount == 0)
     }
 }
